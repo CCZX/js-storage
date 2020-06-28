@@ -9,6 +9,6 @@ export enum NATIVE_DATA_TYPE {
 
 export function isType(type: NATIVE_DATA_TYPE) {
   return (arg: any): boolean => {
-    return Object.prototype.toString.call(arg) === `object ${type}`
+    return Object.prototype.toString.call(arg) === `[object ${type}]`
   }
 }
