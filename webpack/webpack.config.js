@@ -8,7 +8,7 @@ module.exports = {
   entry: path.resolve(__dirname, './../test/index.js'), // 入口文件
   output: {
     filename: '[name].[hash:8].js', // 打包生成的文件名称
-    path: path.resolve(__dirname, './../build') // 打包路劲
+    path: path.resolve(__dirname, './../dist') // 打包路劲
   },
   module: {
     rules: [
@@ -23,10 +23,14 @@ module.exports = {
     extensions: [ '.js', '.tsx', '.ts' ]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist')
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    })
   ]
 }
