@@ -1,5 +1,1 @@
-import JSLocalStorage from './localStorage'
-
-export default {
-  JSLocalStorage,
-}
+export { default as JSLocalStorage } from './localStorage'
