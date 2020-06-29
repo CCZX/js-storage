@@ -10,7 +10,7 @@
     "dev": "webpack-dev-server --config webpack/webpack.config.js",
     "publish": ""
   },
-  "keywords": [],
+  "keywords": ["HTML5", "storage", "localStorage", "sessionStorage", "cookie"],
   "author": "",
   "license": "ISC",
   "devDependencies": {

@@ -1,4 +1,1 @@
-import { JSLocalStorage } from './../src'
-
-JSLocalStorage.set('a', '123')
-
+import('./localstorage')
