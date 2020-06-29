@@ -26,3 +26,15 @@ import { JSLocalStorage } from 'js-storages'
 
 #### 1、set
 
+> 语法：
+
+```ts
+JSLocalStorage.set(key, value[, time[, callback]])
+```
+
+> 参数：
+
+**key**，必须，`string`
+
+存储值的
+
