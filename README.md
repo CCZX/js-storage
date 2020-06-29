@@ -1,6 +1,6 @@
 # js-storages
 
-> 封装了一些对localStorage、sessionStorage、Cookie操作的方法
+`js-storages`是一个封装了localStorage、sessionStorage、Cookie对象的方法的JavaScript库。使用`js-storages`你可以简单、方便的对本地存储进行操作。
 
 ## 安装
 
@@ -15,7 +15,6 @@ storages.JSLocalStorage.set('key', 'value')
 storages.JSLocalStorage.get('key')
 ```
 你也可以导入指定的操作模块
-
 ```javascript
 import { JSLocalStorage } from 'js-storages'
 ```

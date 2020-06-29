@@ -4,7 +4,7 @@
   "description": "html5、localStorage、sessionStorage...",
   "main": "./lib/index.js",
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./lib",
     "build:ts": "tsc",
     "build": "npm run clean && npm run build:ts",
     "dev": "webpack-dev-server --config webpack/webpack.config.js"
