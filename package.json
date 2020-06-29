@@ -1,17 +1,19 @@
 {
   "name": "js-storages",
   "version": "0.0.1",
-  "description": "localStorage、sessionStorage...",
+  "description": "html5、localStorage、sessionStorage...",
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
     "build:ts": "tsc",
     "build": "npm run clean && npm run build:ts",
-    "dev": "webpack-dev-server --config webpack/webpack.config.js",
-    "publish": ""
+    "dev": "webpack-dev-server --config webpack/webpack.config.js"
   },
   "keywords": ["HTML5", "storage", "localStorage", "sessionStorage", "cookie"],
-  "author": "",
+  "author": {
+    "name": "chenchao",
+    "url": "https://github.com/CCZX"
+  },
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
@@ -24,5 +26,6 @@
   },
   "dependencies": {
     "typescript": "^3.9.5"
-  }
+  },
+  "repository": "https://github.com/CCZX/js-storage"
 }
