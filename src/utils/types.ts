@@ -11,3 +11,5 @@ export enum StorageType {
   localStorage = 'localStorage',
   sessionStorage = 'sessionStorage'
 }
+
+export type storageValue = string | object | any[] | number
