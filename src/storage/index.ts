@@ -1,9 +1,7 @@
 import { storageHasKey, getStorageKeys, isType } from './../utils/common'
-import { StorageType, NativeDataType } from './../utils/types'
+import { StorageType, NativeDataType, storageValue } from './../utils/types'
 
 const DEFAULT_EXPIRES = 1000 * 60 * 60 * 24
-const localStorage: Storage = window.localStorage
-type storageValue = string | object | any[] | number
 
 export default class JSStorage {
   currentStorage: StorageType
@@ -19,7 +17,7 @@ export default class JSStorage {
   get(key: string, cb?: (...arg: any) => any) {
     if (!storageHasKey(key, this.currentStorage)) return null
     try {
-      const { expires, value } = JSON.parse(localStorage.getItem(key) as string)
+      const { expires, value } = JSON.parse(window[this.currentStorage].getItem(key) as string)
       const nowDate = Date.now()
       if (nowDate > Number(expires)) {
         this.reomve(key)
@@ -40,13 +38,14 @@ export default class JSStorage {
    */
   set(key: string, value: storageValue, time: number = DEFAULT_EXPIRES, cb?: (...arg: any) => any) {
     if (!isType(NativeDataType.String)(key)) return
+    console.log(key, value)
     const expires: number = Date.now() + time
     const res = {
       expires,
       value
     }
     const strValue = JSON.stringify(res)
-    localStorage.setItem(key, strValue)
+    window[this.currentStorage].setItem(key, strValue)
   }
 
   /**
@@ -55,7 +54,7 @@ export default class JSStorage {
    */
   reomve(key: string) {
     const val = this.get(key)
-    localStorage.removeItem(key)
+    window[this.currentStorage].removeItem(key)
     return val
   }
 
