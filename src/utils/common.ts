@@ -1,7 +1,4 @@
-export enum StorageType {
-  localStorage = 'localStorage',
-  sessionStorage = 'sessionStorage'
-}
+import { NativeDataType, StorageType } from './types'
 
 /**
  * 获取localStorage、sessionStorage的键
@@ -20,4 +17,14 @@ export function getStorageKeys(type: StorageType): string[] {
 export function storageHasKey(key: string, storage: StorageType): boolean {
   const storageKeys = getStorageKeys(storage)
   return storageKeys.indexOf(key) !== -1
+}
+
+export function isType(type: NativeDataType) {
+  return (arg: any): boolean => {
+    return Object.prototype.toString.call(arg) === `[object ${type}]`
+  }
+}
+
+export function getType(arg: any) {
+  
 }

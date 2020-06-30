@@ -1,13 +1,15 @@
-import { getStorageKeys, storageHasKey, isType } from './../utils/common'
+import { storageHasKey, getStorageKeys, isType } from './../utils/common'
 import { StorageType, NativeDataType } from './../utils/types'
 
-// 默认一天时间过期
 const DEFAULT_EXPIRES = 1000 * 60 * 60 * 24
-const currentStorage = StorageType.localStorage
 const localStorage: Storage = window.localStorage
 type storageValue = string | object | any[] | number
 
-const JSLocalStorage = {
+export default class JSStorage {
+  currentStorage: StorageType
+  constructor(currentStorage: StorageType) {
+    this.currentStorage = currentStorage
+  }
 
   /**
    * 根据key获取某个storage项
@@ -15,7 +17,7 @@ const JSLocalStorage = {
    * @param cb 执行成功的回调函数
    */
   get(key: string, cb?: (...arg: any) => any) {
-    if (!storageHasKey(key, currentStorage)) return null
+    if (!storageHasKey(key, this.currentStorage)) return null
     try {
       const { expires, value } = JSON.parse(localStorage.getItem(key) as string)
       const nowDate = Date.now()
@@ -27,8 +29,7 @@ const JSLocalStorage = {
     } catch (error) {
       return error
     }
-    
-  },
+  }
 
   /**
    * 设置某个storage项
@@ -46,7 +47,7 @@ const JSLocalStorage = {
     }
     const strValue = JSON.stringify(res)
     localStorage.setItem(key, strValue)
-  },
+  }
 
   /**
    * 根据key删除某个storage项
@@ -56,30 +57,28 @@ const JSLocalStorage = {
     const val = this.get(key)
     localStorage.removeItem(key)
     return val
-  },
+  }
 
   /**
    * 删除所有storage项
    */
   removeAll() {
-    const keys: string[] = getStorageKeys(currentStorage)
+    const keys: string[] = getStorageKeys(this.currentStorage)
     keys.forEach(key => {
       this.reomve(key)
     })
     return true
-  },
+  }
 
   /**
    * 是否包含某个storage项
    * @param key 
    */
   has(key: string): boolean {
-    return storageHasKey(key, currentStorage)
-  },
+    return storageHasKey(key, this.currentStorage)
+  }
 
   keys(): string[] {
-    return getStorageKeys(currentStorage)
+    return getStorageKeys(this.currentStorage)
   }
 }
-
-export default JSLocalStorage
