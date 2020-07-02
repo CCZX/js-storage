@@ -1,8 +1,7 @@
 import { storageHasKey, getStorageKeys, isType } from './../utils/common'
 import { StorageType, NativeDataType, storageValue } from './../utils/types'
 
-// const DEFAULT_EXPIRES = 1000 * 60 * 60 * 24
-const DEFAULT_EXPIRES = Infinity
+import { DEFAULT_EXPIRES } from './../const'
 
 export default class JSStorage {
   currentStorage: StorageType
@@ -37,7 +36,7 @@ export default class JSStorage {
    * @param time 过期时间：毫秒单位
    * @param cb 
    */
-  set(key: string, value: storageValue, time: number = DEFAULT_EXPIRES, cb?: (...arg: any) => any) {
+  set(key: string, value: storageValue, time: number = DEFAULT_EXPIRES.storage, cb?: (...arg: any) => any) {
     if (!isType(NativeDataType.String)(key)) return
     const expires: number = Date.now() + time
     const res = {
