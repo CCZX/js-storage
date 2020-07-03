@@ -29,11 +29,11 @@ const keys = JSSessionStorage.keys()
 console.log('sessionStorage keys:', keys)
 
 // has key
-const hasA = JSSessionStorage.has('a')
-console.log('hasA', hasA)
+// const hasA = JSSessionStorage.has('a')
+// console.log('hasA', hasA)
 
-const hasAA = JSSessionStorage.has('aa')
-console.log('hasAA', hasAA)
+// const hasAA = JSSessionStorage.has('aa')
+// console.log('hasAA', hasAA)
 
 // remove and removeAll
 JSSessionStorage.reomve('a')
