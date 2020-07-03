@@ -1,5 +1,7 @@
 # js-storages
 
+[![Build Status](https://travis-ci.org/CCZX/js-storage.svg?branch=master)](https://travis-ci.org/CCZX/js-storage)
+
 `js-storages`是一个封装了`localStorage`、`sessionStorage`、`Cookie`对象的方法的`JavaScript`库。使用`js-storages`你可以简单、方便的对本地存储进行操作。
 
 ## 安装
