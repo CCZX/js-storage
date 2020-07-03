@@ -123,3 +123,6 @@ JSLocalStorage.has(key)
 ```javascript
 JSLocalStorage.keys()
 ```
+
+### cookie
+
