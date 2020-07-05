@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export enum NativeDataType {
   String = 'String',
   Number = 'Number',
@@ -13,3 +15,10 @@ export enum StorageType {
 }
 
 export type storageValue = string | object | any[] | number
+
+export type CookieRemainArgs = {
+  expires: number | null,
+  path: string | null,
+  domain: string | null,
+  secure: boolean | null
+}
