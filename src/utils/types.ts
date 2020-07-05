@@ -6,7 +6,8 @@ export enum NativeDataType {
   Undefined = 'Undefined',
   Array = 'Array',
   Object = 'Object',
-  Function = 'Function'
+  Function = 'Function',
+  Date = 'Date'
 }
 
 export enum StorageType {
@@ -17,8 +18,8 @@ export enum StorageType {
 export type storageValue = string | object | any[] | number
 
 export type CookieRemainArgs = {
-  expires: number | null,
-  path: string | null,
-  domain: string | null,
-  secure: boolean | null
+  expires?: number | Date | null,
+  path?: string | null,
+  domain?: string | null,
+  secure?: boolean | null
 }
