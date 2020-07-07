@@ -15,26 +15,30 @@ const DEFAULT_ARGS: CookieRemainArgs = {
 
 class Cookie {
 
-  private handlerExpires(expires: number | Date | undefined | null) {
+  /**
+   * 计算过期时间
+   * @param expires 
+   */
+  private computedExpires(expires: number | Date | undefined | null) {
     if (isType(NativeDataType.Date)(expires)) {
       return (expires as Date).toUTCString()
     } else if (isType(NativeDataType.Number)(expires)) {
       const nowTime = Date.now()
       const expiresTime = nowTime + (expires as number)
-      // const 
-      return new Date(expiresTime)
+      return new Date(expiresTime).toUTCString()
     } else if (isType(NativeDataType.String)(expires)) {
       
+    } else {
+      return expires
     }
   }
 
   set(key: string, value: any, args: CookieRemainArgs = DEFAULT_ARGS) {
     if (!key || illegalKeyReg.test(key)) return
     const { expires, path, domain, secure } = args
-    console.log({ expires, path, domain, secure })
-    const res = this.handlerExpires(expires)
-    console.log(res, 123)
-    // document.cookie = `${key}=${value}; ${expires ? '' : ''}`
+    const expiresDate = this.computedExpires(expires)
+    const cookieStr = `${key}=${value};${expires ? `expires=${expiresDate};` : ''}${path ? `path=${path};` : ''}${domain ? `domain=${domain};` : ''}${secure ? `secure` : ''}`
+    document.cookie = cookieStr
   }
 
   get(key: string, path: string, domain: string) {
