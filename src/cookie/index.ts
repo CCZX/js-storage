@@ -37,7 +37,7 @@ class Cookie {
     if (!key || illegalKeyReg.test(key)) return
     const { expires, path, domain, secure } = args
     const expiresDate = this.computedExpires(expires)
-    const cookieStr = `${key}=${value};${expires ? `expires=${expiresDate};` : ''}${path ? `path=${path};` : ''}${domain ? `domain=${domain};` : ''}${secure ? `secure` : ''}`
+    const cookieStr = `${encodeURIComponent(key)}=${encodeURIComponent(value)};${expires ? `expires=${expiresDate};` : ''}${path ? `path=${path};` : ''}${domain ? `domain=${domain};` : ''}${secure ? `secure` : ''}`
     document.cookie = cookieStr
   }
 
