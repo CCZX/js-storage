@@ -8,6 +8,7 @@
 
 ```bash
 npm install js-storages --save-dev
+yarn add js-storages
 ```
 
 ## 使用
@@ -17,15 +18,28 @@ import storages from 'js-storages'
 
 storages.JSLocalStorage.set('key', 'value')
 storages.JSLocalStorage.get('key')
+
+storages.JSSessionStorage.set('key', 'value')
+storages.JSSessionStorage.get('key')
+
+storages.JSCookie.set('key', 'value', {
+  expires: 1000*60*60*24*30,
+  path: '/',
+  domain: 'www.baidu.com',
+  secure: true
+})
+storages.JSCookie.get('key')
 ```
-你也可以导入指定的操作模块
+
+你也可以导入指定指定模块后再进行操作
 ```javascript
-import { JSLocalStorage } from 'js-storages'
+import { JSLocalStorage, JSSessionStorage, JSCookie } from 'js-storages'
 ```
 
 ## 具体方法
 
 ### `localStorage`、`sessionStorage`
+`HTML5`提供的`localStorage`和`sessionStorage`对象的`API`十分类似，只是在对值保存的生命周期上有所不同：[网址链接](https://juejin.im/post/5a191c47f265da43111fe859)，所以对`localStorage`和`sessionStorage`封装的`API`是相同的。
 
 #### 1、set
 
