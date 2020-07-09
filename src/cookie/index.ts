@@ -33,7 +33,7 @@ class Cookie {
     }
   }
 
-  set(key: string, value: any, args: CookieRemainArgs = DEFAULT_ARGS) {
+  set(key: string, value: any, args: CookieRemainArgs) {
     if (!key || illegalKeyReg.test(key)) return
     const { expires, path, domain, secure } = args
     const expiresDate = this.computedExpires(expires)
@@ -41,8 +41,46 @@ class Cookie {
     document.cookie = cookieStr
   }
 
-  get(key: string, path: string, domain: string) {
+  get(key: string) {
+    return decodeURIComponent(
+      document.cookie.replace(
+        new RegExp(
+          "(?:(?:^|.*;)\\s*" +
+          encodeURIComponent(key).
+          replace(/[-.+*]/g, "\\$&") +
+          "\\s*\\=\\s*([^;]*).*$)|^.*$"
+        ), "$1"
+      )
+    ) || null;
+  }
 
+  remove (key: string, path?: string, domain?: string) {
+    if (!key || !this.has(key)) return
+    document.cookie = encodeURIComponent(key) +
+      "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" +
+      ( domain ? "; domain=" + domain : "") +
+      ( path ? "; path=" + path : "")
+    return key
+  }
+
+  removeAll() {
+    const keys = this.keys()
+    keys.forEach(key => {
+      this.remove(key)
+    })
+    return true
+  }
+
+  has (key: string) {
+    return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(key).replace(/[-.+*]/g, "\\$&") + "\\s*\\=")).test(document.cookie)
+  }
+
+  keys () {
+    const keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/)
+    for (let index = 0; index < keys.length; index++) {
+      keys[index] = decodeURIComponent(keys[index])
+    }
+    return keys
   }
 }
 
