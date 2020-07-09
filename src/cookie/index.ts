@@ -54,7 +54,7 @@ class Cookie {
     ) || null;
   }
 
-  remove (key: string, path?: string, domain?: string) {
+  remove(key: string, path?: string, domain?: string) {
     if (!key || !this.has(key)) return
     document.cookie = encodeURIComponent(key) +
       "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" +
@@ -71,11 +71,11 @@ class Cookie {
     return true
   }
 
-  has (key: string) {
+  has(key: string) {
     return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(key).replace(/[-.+*]/g, "\\$&") + "\\s*\\=")).test(document.cookie)
   }
 
-  keys () {
+  keys() {
     const keys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/)
     for (let index = 0; index < keys.length; index++) {
       keys[index] = decodeURIComponent(keys[index])
