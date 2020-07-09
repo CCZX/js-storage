@@ -1,6 +1,6 @@
 {
   "name": "js-storages",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "html5、localStorage、sessionStorage...",
   "main": "./lib/index.js",
   "scripts": {
