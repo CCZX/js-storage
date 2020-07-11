@@ -23,10 +23,10 @@ storages.JSSessionStorage.set('key', 'value')
 storages.JSSessionStorage.get('key')
 
 storages.JSCookie.set('key', 'value', {
-  expires: 1000*60*60*24*30,
-  path: '/',
-  domain: 'www.baidu.com',
-  secure: true
+ " : 1000*60*60*24*30,
+ " path: '/',
+ " domain: 'www.baidu.com',
+ " secure: true
 })
 storages.JSCookie.get('key')
 ```
@@ -140,3 +140,33 @@ JSLocalStorage.keys()
 
 ### cookie
 
+#### 1、set
+
+> 语法：
+
+```ts
+JSCookie.set('test', 'value', {
+  path: '/',
+  expries: 1000 * 60
+})
+```
+
+> 参数：
+
+**key** [`string`]
+
+必填字段，不能是：`path`、`expires`、`domain`等字段。
+
+**value** [`any`]
+
+必填字段，存储的值
+
+**args** [`object`]
+
+可选字段，额外的配置信息，包括`path`、`expires`、`domain`、`secure`。
+```json
+"expires": "cookie过期时间",
+"path": "cookie存储的路径",
+"domain": "cookie存储的域名",
+"secure": "cookie只通过https协议传输"
+```
