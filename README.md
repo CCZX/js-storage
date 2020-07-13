@@ -169,3 +169,69 @@ JSCookie.set('test', 'value', {
 "domain": "cookie存储的域名",
 "secure": "cookie只通过https协议传输"
 ```
+
+#### 2、get
+
+获取某个cookie的value。
+
+> 语法：
+
+```js
+JSCookie.get('key')
+```
+
+> 参数：
+
+**key** [`string`]
+
+必填字段。
+
+#### 3、has
+
+判断是否存储有某个cookie。
+
+> 语法：
+
+```js
+JSCookie.has('key')
+```
+> 参数：
+
+**key** [`string`]
+
+必填字段
+
+#### 4、remove
+
+清除某个cookie
+
+> 语法：
+
+```js
+JSCookie.remove('key')
+```
+> 参数：
+
+**key** [`string`]
+
+必填字段
+
+#### 5、removeAll
+
+清除所有cookie
+
+> 语法：
+
+```js
+JSCookie.removeAll()
+```
+
+#### 6、keys
+
+获取所有cookie的key，并以数组的形式返回。
+
+> 语法：
+
+```js
+JSCookie.keys()
+```
