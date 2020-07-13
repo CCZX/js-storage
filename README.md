@@ -1,5 +1,5 @@
 # js-storages
-[![node version](https://badgen.net/npm/node/next)]()[![Build Status](https://travis-ci.org/CCZX/js-storage.svg?branch=master)](https://travis-ci.org/CCZX/js-storage) [![js-storages npm version](https://badgen.net/npm/v/js-storages)](https://www.npmjs.com/package/js-storages) [![js-storages weekly download](https://badgen.net/npm/dw/js-storages)](https://www.npmjs.com/package/js-storages)
+[![node version](https://badgen.net/npm/node/next)]() [![Build Status](https://travis-ci.org/CCZX/js-storage.svg?branch=master)](https://travis-ci.org/CCZX/js-storage) [![js-storages npm version](https://badgen.net/npm/v/js-storages)](https://www.npmjs.com/package/js-storages) [![js-storages weekly download](https://badgen.net/npm/dw/js-storages)](https://www.npmjs.com/package/js-storages)
 
 `js-storages`是一个封装了`localStorage`、`sessionStorage`、`Cookie`对象的方法的`JavaScript`库。使用`js-storages`你可以简单、方便的对本地存储进行操作。
 
